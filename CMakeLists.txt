@@ -17,6 +17,7 @@ file(GLOB_RECURSE SRC CONFIGURE_DEPENDS
     ${CMAKE_SOURCE_DIR}/forms/*.ui
     ${CMAKE_SOURCE_DIR}/include/*.h
     ${CMAKE_SOURCE_DIR}/src/*.cpp
+    ${CMAKE_SOURCE_DIR}/res/res.qrc
 )
 
 qt_add_executable(gcplayer

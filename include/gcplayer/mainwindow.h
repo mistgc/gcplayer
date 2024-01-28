@@ -7,6 +7,8 @@ namespace Ui {
 class MainWindow;
 }
 
+class TitleBar;
+
 class MainWindow : public QMainWindow {
   Q_OBJECT
  public:
@@ -14,7 +16,17 @@ class MainWindow : public QMainWindow {
   ~MainWindow();
 
  private:
+  void init();
+
+ private:
   Ui::MainWindow *ui;
+
+  TitleBar *m_titleBar;
+
+ private slots:
+  void do_MainWindowClose();
+  void do_MainWindowMax();
+  void do_MainWindowMin();
 };
 
 #endif  // GCPLAYER_MAINWINDOW_H_
