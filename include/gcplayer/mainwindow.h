@@ -8,6 +8,7 @@ class MainWindow;
 }
 
 class TitleBar;
+class Playlist;
 
 class MainWindow : public QMainWindow {
   Q_OBJECT
@@ -22,6 +23,7 @@ class MainWindow : public QMainWindow {
   Ui::MainWindow *ui;
 
   TitleBar *m_titleBar;
+  Playlist *m_playlist;
 
  private slots:
   void do_MainWindowClose();

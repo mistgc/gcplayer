@@ -1,4 +1,5 @@
 #include <gcplayer/mainwindow.h>
+#include <gcplayer/playlist.h>
 #include <gcplayer/titlebar.h>
 #include <ui_mainwindow.h>
 
@@ -11,13 +12,18 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::init() {
   // Title Bar
   m_titleBar = new TitleBar(this);
-  m_titleBar->setGeometry(QRect(0, 0, this->width(), 50));
+  ui->titleBar->setTitleBarWidget(m_titleBar);
   connect(m_titleBar, SIGNAL(sig_MainWindowClose()), this,
           SLOT(do_MainWindowClose()));
   connect(m_titleBar, SIGNAL(sig_MainWindowMax()), this,
           SLOT(do_MainWindowMax()));
   connect(m_titleBar, SIGNAL(sig_MainWindowMin()), this,
           SLOT(do_MainWindowMin()));
+
+  // Playlist
+  m_playlist = new Playlist(this);
+  ui->playlist->setTitleBarWidget(new QWidget(this));
+  ui->playlist->setWidget(m_playlist);
 }
 
 void MainWindow::do_MainWindowClose() { this->close(); }
