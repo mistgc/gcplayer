@@ -10,6 +10,7 @@ class Playlist;
 class QVBoxLayout;
 
 class __PlaylistInner : public QListWidget {
+  Q_OBJECT
  public:
   explicit __PlaylistInner(QWidget *parent = nullptr);
 
@@ -23,6 +24,12 @@ class __PlaylistInner : public QListWidget {
   QMenu *m_menu;
   QAction *m_actAddFile;
   QAction *m_actClearList;
+  quint32 m_currListItemIndex;
+
+ private slots:
+  void on_actAddFile_triggered();
+  void on_actClearList_triggered();
+  void do_itemActivated(QListWidgetItem *item);
 };
 
 class Playlist : public QWidget {
