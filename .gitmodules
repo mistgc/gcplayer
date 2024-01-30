@@ -1,0 +1,3 @@
+[submodule "include/tttl"]
+	path = include/tttl
+	url = https://github.com/mistgc/tinytinytinylog.h

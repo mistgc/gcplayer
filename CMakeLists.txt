@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(gcplayer VERSION 0.1 LANGUAGES CXX)
+project(gcplayer VERSION 0.1 LANGUAGES C CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -17,6 +17,7 @@ file(GLOB_RECURSE SRC CONFIGURE_DEPENDS
     ${CMAKE_SOURCE_DIR}/forms/*.ui
     ${CMAKE_SOURCE_DIR}/include/*.h
     ${CMAKE_SOURCE_DIR}/src/*.cpp
+    ${CMAKE_SOURCE_DIR}/src/*.c
     ${CMAKE_SOURCE_DIR}/res/res.qrc
 )
 
