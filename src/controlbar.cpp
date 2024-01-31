@@ -17,10 +17,10 @@ void ControlBar::init() {
   // Time Slider
   // set 3s per step for slider
   ui->sliderTime->setSingleStep(3);
-  connect(ui->sliderTime, &QSlider::valueChanged, [&](int value_s) {
+  connect(ui->sliderTime, &QSlider::sliderMoved, [&](int value_s) {
     m_elapsedDuration = value_s * 1000;
     this->setElapsedTime(value_s * 1000);
-    emit sig_sliderValueChanged(value_s);
+    emit sig_sliderMoved(value_s);
   });
   // Elapsed Timer
   connect(m_elapsedTimer, &QTimer::timeout, [&] {
