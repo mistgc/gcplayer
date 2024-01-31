@@ -1,3 +1,4 @@
+#include <gcplayer/log.h>
 #include <gcplayer/playlist.h>
 #include <ui_playlist.h>
 
@@ -12,6 +13,7 @@
 Playlist::Playlist(QWidget *parent)
     : QWidget(parent),
       m_inner(new __PlaylistInner(this)),
+      m_layout(new QVBoxLayout(this)),
       ui(new Ui::Playlist) {
   ui->setupUi(this);
   init();
@@ -20,9 +22,21 @@ Playlist::Playlist(QWidget *parent)
 Playlist::~Playlist() { delete ui; }
 
 void Playlist::init() {
-  m_layout = new QVBoxLayout(this);
+  // __PlaylistInner
   m_layout->addWidget(m_inner);
   m_layout->setContentsMargins(2, 2, 2, 2);
+
+  connect(m_inner, &__PlaylistInner::itemActivated, this,
+          &Playlist::do_itemActivated);
+}
+
+void Playlist::do_itemActivated(QListWidgetItem *item) {
+  QString path = item->data(Qt::UserRole).toString();
+  m_currListItemIndex = m_inner->row(item);
+
+  linfo("Selected %s", path.constData());
+
+  emit sig_mediaSelected(path);
 }
 
 __PlaylistInner::__PlaylistInner(QWidget *parent)
@@ -42,8 +56,6 @@ void __PlaylistInner::init() {
           SLOT(on_actAddFile_triggered()));
   connect(m_actClearList, SIGNAL(triggered()), this,
           SLOT(on_actClearList_triggered()));
-  connect(this, SIGNAL(itemActivated(QListWidgetItem *)), this,
-          SLOT(do_itemActivated(QListWidgetItem *)));
 }
 
 void __PlaylistInner::contextMenuEvent(QContextMenuEvent *ev) {
@@ -61,11 +73,6 @@ void __PlaylistInner::on_actAddFile_triggered() {
     item->setText(fileInfo.fileName());
     this->addItem(item);
   }
-}
-
-void __PlaylistInner::do_itemActivated(QListWidgetItem *item) {
-  m_currListItemIndex = this->row(item);
-  qDebug() << item->data(Qt::UserRole).toString();
 }
 
 void __PlaylistInner::on_actClearList_triggered() { this->clear(); }

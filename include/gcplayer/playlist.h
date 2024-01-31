@@ -24,12 +24,10 @@ class __PlaylistInner : public QListWidget {
   QMenu *m_menu;
   QAction *m_actAddFile;
   QAction *m_actClearList;
-  quint32 m_currListItemIndex;
 
  private slots:
   void on_actAddFile_triggered();
   void on_actClearList_triggered();
-  void do_itemActivated(QListWidgetItem *item);
 };
 
 class Playlist : public QWidget {
@@ -45,6 +43,14 @@ class Playlist : public QWidget {
   Ui::Playlist *ui;
   __PlaylistInner *m_inner;
   QVBoxLayout *m_layout;
+  quint32 m_currListItemIndex;
+
+ public slots:
+  void do_itemActivated(QListWidgetItem *item);
+
+ signals:
+  void sig_mediaSelected(QString &path);
+  void sig_listCleared();
 };
 
 #endif  // GCPLAYER_PLAYLIST_H_

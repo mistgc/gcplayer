@@ -1,17 +1,29 @@
+#include <gcplayer/controlbar.h>
 #include <gcplayer/mainwindow.h>
+#include <gcplayer/playerwidget.h>
 #include <gcplayer/playlist.h>
 #include <gcplayer/titlebar.h>
 #include <ui_mainwindow.h>
 
+#include <QVBoxLayout>
+
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), ui(new Ui::MainWindow) {
+    : QMainWindow(parent),
+      ui(new Ui::MainWindow),
+      m_titleBar(new TitleBar(this)),
+      m_playlist(new Playlist(this)),
+      m_playerWidget(new PlayerWidget(this)),
+      m_ctrlBar(new ControlBar(this)),
+      m_centralWidgetLayout(new QVBoxLayout) {
   ui->setupUi(this);
   init();
 }
 
 void MainWindow::init() {
+  // Central Widget
+  ui->centralwidget->setLayout(m_centralWidgetLayout);
+
   // Title Bar
-  m_titleBar = new TitleBar(this);
   ui->titleBar->setTitleBarWidget(m_titleBar);
   connect(m_titleBar, SIGNAL(sig_MainWindowClose()), this,
           SLOT(do_MainWindowClose()));
@@ -21,9 +33,18 @@ void MainWindow::init() {
           SLOT(do_MainWindowMin()));
 
   // Playlist
-  m_playlist = new Playlist(this);
   ui->playlist->setTitleBarWidget(new QWidget(this));
   ui->playlist->setWidget(m_playlist);
+  connect(m_playlist, &Playlist::sig_mediaSelected, m_playerWidget,
+          &PlayerWidget::setMediaSource);
+
+  // Player Widget
+  m_centralWidgetLayout->addWidget(m_playerWidget);
+
+  // Control Bar
+  m_centralWidgetLayout->addWidget(m_ctrlBar);
+  connect(m_ctrlBar, SIGNAL(sig_btnPlay_clicked()), m_playerWidget,
+          SLOT(playOrPause()));
 }
 
 void MainWindow::do_MainWindowClose() { this->close(); }

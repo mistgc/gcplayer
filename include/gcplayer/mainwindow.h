@@ -9,6 +9,9 @@ class MainWindow;
 
 class TitleBar;
 class Playlist;
+class ControlBar;
+class PlayerWidget;
+class QVBoxLayout;
 
 class MainWindow : public QMainWindow {
   Q_OBJECT
@@ -24,6 +27,9 @@ class MainWindow : public QMainWindow {
 
   TitleBar *m_titleBar;
   Playlist *m_playlist;
+  ControlBar *m_ctrlBar;
+  PlayerWidget *m_playerWidget;
+  QVBoxLayout *m_centralWidgetLayout;
 
  private slots:
   void do_MainWindowClose();

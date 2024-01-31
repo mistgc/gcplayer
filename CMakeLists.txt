@@ -12,6 +12,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Multimedia)
+find_package(Qt6 REQUIRED COMPONENTS MultimediaWidgets)
 
 file(GLOB_RECURSE SRC CONFIGURE_DEPENDS
     ${CMAKE_SOURCE_DIR}/forms/*.ui
@@ -28,6 +30,8 @@ qt_add_executable(gcplayer
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Widgets)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Multimedia)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::MultimediaWidgets)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     WIN32_EXECUTABLE ON
