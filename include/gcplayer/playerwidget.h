@@ -36,6 +36,8 @@ class PlayerWidget : public QWidget {
 
  signals:
   void sig_durationChanged(qint64 duration);
+  void sig_played();
+  void sig_paused();
 };
 
 #endif  // GCPLAYER_PLAYERWIDGET_H_

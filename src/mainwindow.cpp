@@ -44,11 +44,19 @@ void MainWindow::init() {
   m_centralWidgetLayout->addWidget(m_playerWidget);
   connect(m_playerWidget, &PlayerWidget::sig_durationChanged, m_ctrlBar,
           &ControlBar::setTotalTime);
+  connect(m_playerWidget, &PlayerWidget::sig_played, m_ctrlBar,
+          &ControlBar::do_mediaPlayed);
+  connect(m_playerWidget, &PlayerWidget::sig_paused, m_ctrlBar,
+          &ControlBar::do_mediaPaused);
 
   // Control Bar
   m_centralWidgetLayout->addWidget(m_ctrlBar);
   connect(m_ctrlBar, SIGNAL(sig_btnPlay_clicked()), m_playerWidget,
           SLOT(playOrPause()));
+  connect(m_ctrlBar, SIGNAL(sig_btnForward_clicked()), m_playlist,
+          SLOT(do_btnForward_clicked()));
+  connect(m_ctrlBar, &ControlBar::sig_sliderValueChanged,
+          [&](int value_s) { m_playerWidget->seek(value_s * 1000); });
 }
 
 void MainWindow::do_MainWindowClose() { this->close(); }

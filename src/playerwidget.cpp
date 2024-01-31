@@ -39,6 +39,7 @@ bool PlayerWidget::setMediaSource(const QString &path) {
   ldebug("Set media source %s", path.toUtf8().constData());
   m_mediaPlayer->setSource(path);
   m_mediaPlayer->play();
+  emit sig_played();
 
   return true;
 }
@@ -46,8 +47,10 @@ bool PlayerWidget::setMediaSource(const QString &path) {
 void PlayerWidget::playOrPause() {
   if (m_mediaPlayer->isPlaying()) {
     m_mediaPlayer->pause();
+    emit sig_paused();
   } else {
     m_mediaPlayer->play();
+    emit sig_played();
   }
 }
 

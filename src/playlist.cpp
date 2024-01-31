@@ -34,9 +34,19 @@ void Playlist::do_itemActivated(QListWidgetItem *item) {
   QString path = item->data(Qt::UserRole).toString();
   m_currListItemIndex = m_inner->row(item);
 
-  linfo("Selected %s", path.toUtf8().constData());
+  linfo("Selected row %d: %s", m_currListItemIndex, path.toUtf8().constData());
 
   emit sig_mediaSelected(path);
+}
+
+void Playlist::do_btnForward_clicked() {
+  if (m_currListItemIndex + 1 < m_inner->count()) {
+    m_currListItemIndex += 1;
+    auto *item = m_inner->item(m_currListItemIndex);
+    QString path = item->data(Qt::UserRole).toString();
+
+    emit sig_mediaSelected(path);
+  }
 }
 
 __PlaylistInner::__PlaylistInner(QWidget *parent)

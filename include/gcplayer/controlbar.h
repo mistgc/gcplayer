@@ -18,18 +18,25 @@ class ControlBar : public QWidget {
 
  private slots:
   void on_btnPlay_clicked();
-
   void on_btnForward_clicked();
+
+ public slots:
+  void do_mediaPlayed();
+  void do_mediaPaused();
 
  private:
   void init();
 
  private:
   Ui::ControlBar *ui;
+  qint64 m_totalDuration = 0;    // ms
+  qint64 m_elapsedDuration = 0;  // ms
+  QTimer *m_elapsedTimer;
 
  signals:
   void sig_btnPlay_clicked();
   void sig_btnForward_clicked();
+  void sig_sliderValueChanged(int value_s);
 };
 
 #endif  // GCPLAYER_CONTROLBAR_H_

@@ -47,6 +47,7 @@ class Playlist : public QWidget {
 
  public slots:
   void do_itemActivated(QListWidgetItem *item);
+  void do_btnForward_clicked();
 
  signals:
   void sig_mediaSelected(QString &path);
