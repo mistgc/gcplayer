@@ -22,6 +22,7 @@ class PlayerWidget : public QWidget {
 
  public slots:
   void playOrPause();
+  void seek(quint64 ms);
 
  private:
   void init();
@@ -34,7 +35,7 @@ class PlayerWidget : public QWidget {
   QVBoxLayout *m_layout;
 
  signals:
-  void sig_mediaLoaded();
+  void sig_durationChanged(qint64 duration);
 };
 
 #endif  // GCPLAYER_PLAYERWIDGET_H_

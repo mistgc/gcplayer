@@ -34,7 +34,7 @@ void Playlist::do_itemActivated(QListWidgetItem *item) {
   QString path = item->data(Qt::UserRole).toString();
   m_currListItemIndex = m_inner->row(item);
 
-  linfo("Selected %s", path.constData());
+  linfo("Selected %s", path.toUtf8().constData());
 
   emit sig_mediaSelected(path);
 }

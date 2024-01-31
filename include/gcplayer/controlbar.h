@@ -13,6 +13,9 @@ class ControlBar : public QWidget {
   explicit ControlBar(QWidget *parent = nullptr);
   ~ControlBar();
 
+  void setElapsedTime(qint64 ms);
+  void setTotalTime(qint64 ms);
+
  private slots:
   void on_btnPlay_clicked();
 

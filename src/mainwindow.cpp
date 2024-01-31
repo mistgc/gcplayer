@@ -37,9 +37,13 @@ void MainWindow::init() {
   ui->playlist->setWidget(m_playlist);
   connect(m_playlist, &Playlist::sig_mediaSelected, m_playerWidget,
           &PlayerWidget::setMediaSource);
+  connect(m_playlist, &Playlist::sig_mediaSelected, m_titleBar,
+          &TitleBar::setTitle);
 
   // Player Widget
   m_centralWidgetLayout->addWidget(m_playerWidget);
+  connect(m_playerWidget, &PlayerWidget::sig_durationChanged, m_ctrlBar,
+          &ControlBar::setTotalTime);
 
   // Control Bar
   m_centralWidgetLayout->addWidget(m_ctrlBar);

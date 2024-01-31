@@ -24,6 +24,8 @@ void PlayerWidget::init() {
   m_mediaPlayer->setVideoOutput(m_videoWidget);
   m_mediaPlayer->setAudioOutput(m_audioOutput);
   m_layout->addWidget(m_videoWidget);
+  connect(m_mediaPlayer, &QMediaPlayer::durationChanged, this,
+          &PlayerWidget::sig_durationChanged);
 }
 
 PlayerWidget::~PlayerWidget() { delete ui; }
@@ -47,4 +49,9 @@ void PlayerWidget::playOrPause() {
   } else {
     m_mediaPlayer->play();
   }
+}
+
+void PlayerWidget::seek(quint64 ms) {
+  ldebug("Media seek to %lld ms", ms);
+  m_mediaPlayer->setPosition(ms);
 }

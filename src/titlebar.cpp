@@ -2,6 +2,8 @@
 #include <gcplayer/utils.h>
 #include <ui_titlebar.h>
 
+#include <QFileInfo>
+
 TitleBar::TitleBar(QWidget *parent) : QWidget(parent), ui(new Ui::TitleBar) {
   ui->setupUi(this);
   init();
@@ -17,3 +19,8 @@ void TitleBar::on_btnClose_clicked() { emit sig_MainWindowClose(); }
 void TitleBar::on_btnMax_clicked() { emit sig_MainWindowMax(); }
 
 TitleBar::~TitleBar() { delete ui; }
+
+void TitleBar::setTitle(QString &s) {
+  auto fileInfo = QFileInfo(s);
+  ui->labelVideoName->setText(fileInfo.fileName());
+}
