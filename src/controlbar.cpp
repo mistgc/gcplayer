@@ -1,5 +1,6 @@
 #include <gcplayer/controlbar.h>
 #include <gcplayer/log.h>
+#include <gcplayer/utils.h>
 #include <ui_controlbar.h>
 
 #include <QTime>
@@ -22,6 +23,11 @@ void ControlBar::init() {
     this->setElapsedTime(value_s * 1000);
     emit sig_sliderMoved(value_s);
   });
+
+  // Set Text Icon for Buttons
+  Utils::setTextIcon(ui->btnPlay, 15, QChar(0xf04b));
+  Utils::setTextIcon(ui->btnForward, 15, QChar(0xf051));
+
   // Elapsed Timer
   connect(m_elapsedTimer, &QTimer::timeout, [&] {
     m_elapsedDuration += 1000;

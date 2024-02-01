@@ -14,6 +14,8 @@ class Utils {
     widget->setFont(font);
     widget->setText(icon);
   }
+
+  static QString getStringFromFile(QString path);
 };
 
 #endif  // GCPLAYER_UTILS_H_

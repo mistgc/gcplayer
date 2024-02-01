@@ -1,5 +1,6 @@
 #include <gcplayer/log.h>
 #include <gcplayer/playlist.h>
+#include <gcplayer/utils.h>
 #include <ui_playlist.h>
 
 #include <QContextMenuEvent>
@@ -28,6 +29,7 @@ void Playlist::init() {
 
   connect(m_inner, &__PlaylistInner::itemActivated, this,
           &Playlist::do_itemActivated);
+  setStyleSheet(Utils::getStringFromFile(":/qss/playlist.css"));
 }
 
 void Playlist::do_itemActivated(QListWidgetItem *item) {
@@ -54,6 +56,7 @@ __PlaylistInner::__PlaylistInner(QWidget *parent)
       m_menu(new QMenu(this)),
       m_actAddFile(new QAction("Add File", this)),
       m_actClearList(new QAction("Clear List", this)) {
+  setObjectName("__PlaylistInner");
   init();
 }
 

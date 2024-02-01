@@ -3,6 +3,7 @@
 #include <gcplayer/playerwidget.h>
 #include <gcplayer/playlist.h>
 #include <gcplayer/titlebar.h>
+#include <gcplayer/utils.h>
 #include <ui_mainwindow.h>
 
 #include <QVBoxLayout>
@@ -57,6 +58,9 @@ void MainWindow::init() {
           SLOT(do_btnForward_clicked()));
   connect(m_ctrlBar, &ControlBar::sig_sliderMoved,
           [&](int value_s) { m_playerWidget->seek(value_s * 1000); });
+
+  // Set Style Sheet
+  setStyleSheet(Utils::getStringFromFile(":/qss/mainwindow.css"));
 }
 
 void MainWindow::do_MainWindowClose() { this->close(); }

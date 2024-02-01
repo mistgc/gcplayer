@@ -1,0 +1,14 @@
+* {
+    background-color: #202129;
+    border: none;
+    color: white;
+    margin: 0;
+}
+
+QPushButton:hover {
+    color: cyan;
+}
+
+#__PlaylistInner::item:hover {
+    color: cyan;
+}

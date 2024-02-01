@@ -13,6 +13,8 @@ void TitleBar::init() {
   Utils::setTextIcon(ui->btnMin, 15, QChar(0xf2d1));
   Utils::setTextIcon(ui->btnMax, 15, QChar(0xf2d0));
   Utils::setTextIcon(ui->btnClose, 15, QChar(0xf2d3));
+
+  setStyleSheet(Utils::getStringFromFile(":/qss/titlebar.css"));
 }
 
 void TitleBar::on_btnClose_clicked() { emit sig_MainWindowClose(); }

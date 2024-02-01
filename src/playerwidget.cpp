@@ -20,6 +20,9 @@ PlayerWidget::PlayerWidget(QWidget *parent)
 }
 
 void PlayerWidget::init() {
+  // Video Widget
+  m_videoWidget->setMinimumSize(320, 180);
+
   // Media Player
   m_mediaPlayer->setVideoOutput(m_videoWidget);
   m_mediaPlayer->setAudioOutput(m_audioOutput);

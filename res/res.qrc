@@ -2,4 +2,9 @@
     <qresource prefix="/fonts">
         <file>JetBrainsMonoNerdFont-Regular.ttf</file>
     </qresource>
+    <qresource prefix="/">
+        <file>qss/titlebar.css</file>
+        <file>qss/mainwindow.css</file>
+        <file>qss/playlist.css</file>
+    </qresource>
 </RCC>
