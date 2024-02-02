@@ -15,7 +15,7 @@ class __PlaylistInner : public QListWidget {
   explicit __PlaylistInner(QWidget *parent = nullptr);
 
  protected:
-  void contextMenuEvent(QContextMenuEvent *ev);
+  void contextMenuEvent(QContextMenuEvent *ev) override;
 
  private:
   void init();
