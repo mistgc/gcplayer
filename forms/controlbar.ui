@@ -108,20 +108,34 @@
    </item>
    <item>
     <widget class="QSlider" name="sliderTime">
+     <property name="maximum">
+      <number>99</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="labVolume">
-     <property name="text">
-      <string>labVol</string>
+    <widget class="GCVolLabel" name="labVolume" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GCVolLabel</class>
+   <extends>QWidget</extends>
+   <header>gcplayer/gcvollabel.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

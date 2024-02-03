@@ -27,6 +27,7 @@ void ControlBar::init() {
   // Set Text Icon for Buttons
   Utils::setTextIcon(ui->btnPlay, 15, QChar(0xf04b));
   Utils::setTextIcon(ui->btnForward, 15, QChar(0xf051));
+  Utils::setTextIcon(ui->labVolume, 15, QChar(0xf027));
 
   // Elapsed Timer
   connect(m_elapsedTimer, &QTimer::timeout, [&] {
