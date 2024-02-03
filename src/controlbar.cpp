@@ -24,6 +24,12 @@ void ControlBar::init() {
     emit sig_sliderMoved(value_s);
   });
 
+  // Volume Label
+  connect(ui->labVolume, &GCVolLabel::sliderMoved, [&](int value) {
+    float value_f = static_cast<float>(value) / 100;
+    emit sig_volSliderMoved(value_f);
+  });
+
   // Set Text Icon for Buttons
   Utils::setTextIcon(ui->btnPlay, 15, QChar(0xf04b));
   Utils::setTextIcon(ui->btnForward, 15, QChar(0xf051));

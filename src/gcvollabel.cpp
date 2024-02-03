@@ -13,8 +13,11 @@ GCVolLabel::GCVolLabel(QWidget *parent)
     : QWidget(parent),
       m_popupSlider(new __GCVolLabel_innerSlider(this)),
       m_textLabel(new __GCVolLabel_innerLabel(this)) {
-  m_popupSlider->setWindowFlag(Qt::ToolTip);
   setPopupFixedSize(15, 70);
+  m_popupSlider->setRange(0, 100);
+  m_popupSlider->setValue(50);  // default volume value is 0.5
+                                // (0 is silence, 1 is full volume)
+  m_popupSlider->setWindowFlag(Qt::ToolTip);
   m_popupSlider->hide();
 
   connect(m_popupSlider, &__GCVolLabel_innerSlider::hoveredIn, [&] {

@@ -56,6 +56,8 @@ void MainWindow::init() {
           SLOT(playOrPause()));
   connect(m_ctrlBar, SIGNAL(sig_btnForward_clicked()), m_playlist,
           SLOT(do_btnForward_clicked()));
+  connect(m_ctrlBar, SIGNAL(sig_volSliderMoved(float)), m_playerWidget,
+          SLOT(setVolume(float)));
   connect(m_ctrlBar, &ControlBar::sig_sliderMoved,
           [&](int value_s) { m_playerWidget->seek(value_s * 1000); });
 

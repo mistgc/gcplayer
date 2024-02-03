@@ -23,6 +23,7 @@ class PlayerWidget : public QWidget {
  public slots:
   void playOrPause();
   void seek(quint64 ms);
+  void setVolume(float value);
 
  private:
   void init();

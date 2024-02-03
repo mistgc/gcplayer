@@ -37,6 +37,7 @@ class ControlBar : public QWidget {
   void sig_btnPlay_clicked();
   void sig_btnForward_clicked();
   void sig_sliderMoved(int value_s);
+  void sig_volSliderMoved(float value);
 };
 
 #endif  // GCPLAYER_CONTROLBAR_H_

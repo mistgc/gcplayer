@@ -23,6 +23,10 @@ void PlayerWidget::init() {
   // Video Widget
   m_videoWidget->setMinimumSize(320, 180);
 
+  // Audio Output
+  m_audioOutput->setVolume(0.5);  // default volume value is 0.5
+                                  // (0 is silence, 1 is full volume)
+
   // Media Player
   m_mediaPlayer->setVideoOutput(m_videoWidget);
   m_mediaPlayer->setAudioOutput(m_audioOutput);
@@ -60,4 +64,9 @@ void PlayerWidget::playOrPause() {
 void PlayerWidget::seek(quint64 ms) {
   ldebug("Media seek to %lld ms", ms);
   m_mediaPlayer->setPosition(ms);
+}
+
+void PlayerWidget::setVolume(float value) {
+  ldebug("Volume value: %f", value);
+  m_audioOutput->setVolume(value);
 }
