@@ -11,8 +11,8 @@
 
 GCVolLabel::GCVolLabel(QWidget *parent)
     : QWidget(parent),
-      m_popupSlider(new __GCVolLabel_innerSlider(this)),
-      m_textLabel(new __GCVolLabel_innerLabel(this)) {
+      m_popupSlider(new __GCVolLabel_InnerSlider(this)),
+      m_textLabel(new __GCVolLabel_InnerLabel(this)) {
   setPopupFixedSize(15, 70);
   m_popupSlider->setRange(0, 100);
   m_popupSlider->setValue(50);  // default volume value is 0.5
@@ -20,19 +20,19 @@ GCVolLabel::GCVolLabel(QWidget *parent)
   m_popupSlider->setWindowFlag(Qt::ToolTip);
   m_popupSlider->hide();
 
-  connect(m_popupSlider, &__GCVolLabel_innerSlider::hoveredIn, [&] {
+  connect(m_popupSlider, &__GCVolLabel_InnerSlider::hoveredIn, [&] {
     m_isSliberHovered = true;
     showPopupSlider();
   });
-  connect(m_popupSlider, &__GCVolLabel_innerSlider::hoveredOut, [&] {
+  connect(m_popupSlider, &__GCVolLabel_InnerSlider::hoveredOut, [&] {
     m_isSliberHovered = false;
     hidePopupSlider();
   });
-  connect(m_textLabel, &__GCVolLabel_innerLabel::hoveredIn, [&] {
+  connect(m_textLabel, &__GCVolLabel_InnerLabel::hoveredIn, [&] {
     m_isSliberHovered = true;
     showPopupSlider();
   });
-  connect(m_textLabel, &__GCVolLabel_innerLabel::hoveredOut, [&] {
+  connect(m_textLabel, &__GCVolLabel_InnerLabel::hoveredOut, [&] {
     m_isSliberHovered = false;
     hidePopupSlider();
   });
@@ -81,18 +81,18 @@ void GCVolLabel::setText(const QString &text) { m_textLabel->setText(text); }
 
 // __GCVolLabel_innerLabel
 
-__GCVolLabel_innerLabel::__GCVolLabel_innerLabel(QWidget *parent)
+__GCVolLabel_InnerLabel::__GCVolLabel_InnerLabel(QWidget *parent)
     : QLabel(parent) {}
 
-void __GCVolLabel_innerLabel::enterEvent(QEnterEvent *ev) { emit hoveredIn(); }
+void __GCVolLabel_InnerLabel::enterEvent(QEnterEvent *ev) { emit hoveredIn(); }
 
-void __GCVolLabel_innerLabel::leaveEvent(QEvent *ev) { emit hoveredOut(); }
+void __GCVolLabel_InnerLabel::leaveEvent(QEvent *ev) { emit hoveredOut(); }
 
 // __GCVolLabel_innerSlider
 
-__GCVolLabel_innerSlider::__GCVolLabel_innerSlider(QWidget *parent)
+__GCVolLabel_InnerSlider::__GCVolLabel_InnerSlider(QWidget *parent)
     : QSlider(parent) {}
 
-void __GCVolLabel_innerSlider::enterEvent(QEnterEvent *ev) { emit hoveredIn(); }
+void __GCVolLabel_InnerSlider::enterEvent(QEnterEvent *ev) { emit hoveredIn(); }
 
-void __GCVolLabel_innerSlider::leaveEvent(QEvent *ev) { emit hoveredOut(); }
+void __GCVolLabel_InnerSlider::leaveEvent(QEvent *ev) { emit hoveredOut(); }

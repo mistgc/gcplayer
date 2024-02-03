@@ -5,8 +5,8 @@
 #include <QSlider>
 #include <QWidget>
 
-class __GCVolLabel_innerSlider;
-class __GCVolLabel_innerLabel;
+class __GCVolLabel_InnerSlider;
+class __GCVolLabel_InnerLabel;
 
 class GCVolLabel : public QWidget {
   Q_OBJECT
@@ -27,8 +27,8 @@ class GCVolLabel : public QWidget {
  private:
   bool m_isLabelHovered = false;
   bool m_isSliberHovered = false;
-  __GCVolLabel_innerLabel *m_textLabel = nullptr;
-  __GCVolLabel_innerSlider *m_popupSlider = nullptr;
+  __GCVolLabel_InnerLabel *m_textLabel = nullptr;
+  __GCVolLabel_InnerSlider *m_popupSlider = nullptr;
 
  signals:
   void sliderValueChanged(int value);
@@ -37,10 +37,10 @@ class GCVolLabel : public QWidget {
   void sliderReleased();
 };
 
-class __GCVolLabel_innerLabel : public QLabel {
+class __GCVolLabel_InnerLabel : public QLabel {
   Q_OBJECT
  public:
-  __GCVolLabel_innerLabel(QWidget *parent = nullptr);
+  __GCVolLabel_InnerLabel(QWidget *parent = nullptr);
 
  protected:
   void enterEvent(QEnterEvent *ev);
@@ -51,10 +51,10 @@ class __GCVolLabel_innerLabel : public QLabel {
   void hoveredOut();
 };
 
-class __GCVolLabel_innerSlider : public QSlider {
+class __GCVolLabel_InnerSlider : public QSlider {
   Q_OBJECT
  public:
-  __GCVolLabel_innerSlider(QWidget *parent = nullptr);
+  __GCVolLabel_InnerSlider(QWidget *parent = nullptr);
 
  protected:
   void enterEvent(QEnterEvent *ev);
