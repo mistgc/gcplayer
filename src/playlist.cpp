@@ -4,10 +4,7 @@
 #include <ui_playlist.h>
 
 #include <QContextMenuEvent>
-#include <QDir>
 #include <QFileDialog>
-#include <QFileInfo>
-#include <QListWidgetItem>
 #include <QMenu>
 #include <QVBoxLayout>
 

@@ -1,12 +1,6 @@
 #include <gcplayer/gcvollabel.h>
 #include <gcplayer/log.h>
 
-#include <QBrush>
-#include <QEvent>
-#include <QLabel>
-#include <QPainter>
-#include <QPen>
-#include <QSlider>
 #include <QTimer>
 
 GCVolLabel::GCVolLabel(QWidget *parent)

@@ -3,7 +3,6 @@
 #include <gcplayer/utils.h>
 #include <ui_controlbar.h>
 
-#include <QTime>
 #include <QTimer>
 
 ControlBar::ControlBar(QWidget *parent)
