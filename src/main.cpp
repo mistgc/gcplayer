@@ -5,9 +5,8 @@
 #include <QFontDatabase>
 
 int main(int argc, char *argv[]) {
-  tttl_log_set_level(TTTL_LOG_DEBUG);
-  tttl_log_set_mode(TTTL_LOG_MODE_ASYNC);
 
+  Logger logger;
   int ret = 0;
   QApplication a(argc, argv);
   QFontDatabase::addApplicationFont(":/fonts/JetBrainsMonoNerd-Regular.ttf");
@@ -15,8 +14,6 @@ int main(int argc, char *argv[]) {
   w.show();
 
   ret = a.exec();
-
-  tttl_log_close();
 
   return ret;
 }
